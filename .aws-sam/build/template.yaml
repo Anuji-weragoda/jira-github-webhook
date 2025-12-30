@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: "Jira \u2192 GitHub Issue Automation"
+Parameters:
+  GitHubToken:
+    Type: String
+    NoEcho: true
+  JiraWebhookSecret:
+    Type: String
+    NoEcho: true
+Resources:
+  JiraWebhookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/jira-webhook.handler
+      Runtime: nodejs20.x
+      Timeout: 30
+      Environment:
+        Variables:
+          GITHUB_TOKEN:
+            Ref: GitHubToken
+          GITHUB_OWNER: Anuji-weragoda
+          GITHUB_REPO: jira-github-webhook
+          JIRA_WEBHOOK_SECRET:
+            Ref: JiraWebhookSecret
+      Events:
+        JiraWebhookApi:
+          Type: Api
+          Properties:
+            Path: /webhook
+            Method: POST
+      CodeUri: JiraWebhookFunction
+    Metadata:
+      SamResourceId: JiraWebhookFunction
+Globals:
+  Function:
+    LoggingConfig:
+      LogFormat: JSON
