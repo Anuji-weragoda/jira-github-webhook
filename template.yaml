@@ -22,7 +22,12 @@ Resources:
           GITHUB_TOKEN: !Ref GitHubToken
           GITHUB_OWNER: Anuji-weragoda
           GITHUB_REPO: jira-github-webhook
-          JIRA_WEBHOOK_SECRET: !Ref JiraWebhookSecret  
+          JIRA_WEBHOOK_SECRET: !Ref JiraWebhookSecret
+          ACCEPTANCE_CRITERIA_FIELD: customfield_10200
+          JIRA_BASE_URL: https://anujiweragoda.atlassian.net/
+          TRIGGER_LABELS: create-github
+          JIRA_TYPES: Story,Task,Sub-task
+          LABEL_MAP_JSON: '{"bug":"bug","enhancement":"enhancement","documentation":"documentation"}'
       Events:
         JiraWebhookApi:
           Type: Api
