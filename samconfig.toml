@@ -20,6 +20,7 @@ resolve_s3 = true
 s3_prefix = "jira-github-webhook"
 image_repositories = []
 disable_rollback = true
+parameter_overrides = "GitHubOwner=\"Anuji-weragoda\" GitHubRepo=\"jira-github-webhook\" JiraEmail=\"anujiwera@gmail.com\" JiraBaseUrl=\"https://anujiweragoda.atlassian.net/\" TriggerLabels=\"create-github\" JiraTypes=\"Story,Task,Sub-task\" LabelMapJson=\"{\\\"bug\\\":\\\"bug\\\",\\\"enhancement\\\":\\\"enhancement\\\",\\\"documentation\\\":\\\"documentation\\\"}\" UserMapJson=\"{\\\"anuji.w@eyepax.com\\\": \\\"Anuji-weragoda\\\", \\\"Anuji-weragoda\\\": \\\"Anuji-weragoda\\\", \\\"anujiwera@gmail.com\\\": \\\"anujiwera\\\", \\\"Anuji Weragoda\\\": \\\"anujiwera\\\" }\""
 
 [default.package.parameters]
 resolve_s3 = true

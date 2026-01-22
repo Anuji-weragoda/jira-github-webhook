@@ -6,9 +6,43 @@ Parameters:
   GitHubToken:
     Type: String
     NoEcho: true
+    Description: GitHub personal access token for API authentication
+  GitHubOwner:
+    Type: String
+    Description: GitHub repository owner/username
+  GitHubRepo:
+    Type: String
+    Description: GitHub repository name
   JiraWebhookSecret:            
     Type: String
     NoEcho: true
+    Description: Jira webhook secret for signature validation
+  JiraEmail:
+    Type: String
+    Description: Jira account email for API authentication
+  JiraApiToken:
+    Type: String
+    NoEcho: true
+    Description: Jira API token for field mapping and image downloads
+  JiraBaseUrl:
+    Type: String
+    Description: Jira instance base URL (e.g., https://yourinstance.atlassian.net/)
+  TriggerLabels:
+    Type: String
+    Default: create-github
+    Description: Comma-separated Jira labels that trigger GitHub issue creation
+  JiraTypes:
+    Type: String
+    Default: "Story,Task,Sub-task"
+    Description: Comma-separated Jira issue types to sync
+  LabelMapJson:
+    Type: String
+    Default: '{"bug":"bug","enhancement":"enhancement","documentation":"documentation"}'
+    Description: JSON mapping of Jira labels to GitHub labels
+  UserMapJson:
+    Type: String
+    Default: '{}'
+    Description: JSON mapping of Jira users to GitHub usernames
 
 Resources:
   JiraWebhookFunction:
@@ -20,14 +54,16 @@ Resources:
       Environment:
         Variables:
           GITHUB_TOKEN: !Ref GitHubToken
-          GITHUB_OWNER: Anuji-weragoda
-          GITHUB_REPO: jira-github-webhook
+          GITHUB_OWNER: !Ref GitHubOwner
+          GITHUB_REPO: !Ref GitHubRepo
           JIRA_WEBHOOK_SECRET: !Ref JiraWebhookSecret
-          ACCEPTANCE_CRITERIA_FIELD: customfield_10200
-          JIRA_BASE_URL: https://anujiweragoda.atlassian.net/
-          TRIGGER_LABELS: create-github
-          JIRA_TYPES: Story,Task,Sub-task
-          LABEL_MAP_JSON: '{"bug":"bug","enhancement":"enhancement","documentation":"documentation"}'
+          JIRA_EMAIL: !Ref JiraEmail
+          JIRA_API_TOKEN: !Ref JiraApiToken
+          JIRA_BASE_URL: !Ref JiraBaseUrl
+          TRIGGER_LABELS: !Ref TriggerLabels
+          JIRA_TYPES: !Ref JiraTypes
+          LABEL_MAP_JSON: !Ref LabelMapJson
+          USER_MAP_JSON: !Ref UserMapJson
       Events:
         JiraWebhookApi:
           Type: Api
