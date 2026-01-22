@@ -118,10 +118,6 @@ Outputs:
 
 **Copy this URL** - you'll need it in the next step.
 
-![1769060105595](image/SETUP_GUIDE/1769060105595.png)
-
-![1769054352474](image/SETUP_GUIDE/1769054352474.png)
-
 ### Step 5: Configure Jira Webhook
 
 1. Go to your **Jira instance** → Settings (⚙️)
@@ -204,8 +200,6 @@ sam deploy
 1. **Access Jira Settings:**
 
    - Click your **profile icon** → **Settings**
-
-     ![1769054754686](image/SETUP_GUIDE/1769054754686.png)
 2. **Navigate to Webhooks:**
 
    - Go to **System** → **WebHooks** (under Administration)
