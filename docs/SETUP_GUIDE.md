@@ -1,4 +1,4 @@
-# *REPOSIROTYLINK : [https://github.com/Anuji-weragoda/jira-github-webhook.git](https://github.com/Anuji-weragoda/jira-github-webhook.git)*
+# *REPOSITORY LINK : [https://github.com/Anuji-weragoda/jira-github-webhook.git](https://github.com/Anuji-weragoda/jira-github-webhook.git)*
 
 # Jira to GitHub Issue Automation - Complete Setup & Configuration Guide
 
